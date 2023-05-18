@@ -3,10 +3,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Server side hosted on Heroku
-
+https://top-100-movies.herokuapp.com/
 
 ## SWAGGER API Documentation
-
+https://top-100-movies.herokuapp.com/v1/docs/
 
 ## Table of Content
  * [Getting Started](#getting-started)
