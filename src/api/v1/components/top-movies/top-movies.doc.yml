@@ -1,0 +1,103 @@
+paths:
+  /v1/top-movies/create/{tmdbMovieId}:
+    post:
+      tags:
+        - TOPMOVIES
+      summary: Add a new movie to your top100Movies list
+      description: User add a new movie.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: tmdbMovieId
+          schema:
+            type: string
+          required: true
+          description: numeric ID of the movie from tmdb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rank:
+                  type: number
+                  example: 1
+      responses:
+        201:
+          description: New movie added
+  /v1/top-movies:
+    get:
+      tags:
+        - TOPMOVIES
+      summary: Get all top100Movies for a user
+      description: 
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: top100Movies fetched
+  /v1/top-movies/{movieId}:
+    get:
+      tags:
+        - TOPMOVIES
+      summary: Get a topMovie by `movieId`
+      description: private route
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieId
+          schema:
+            type: string
+          required: true
+          description: Alphanumeric ID of the movie
+      responses:
+        200:
+          description: top100Movies fetched
+    patch:
+      tags:
+        - TOPMOVIES
+      summary: Update the rank of a movie by `movieId`
+      description: private route
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieId
+          schema:
+            type: string
+          required: true
+          description: Alphanumeric ID of the movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rank:
+                  type: number
+                  example: 1
+      responses:
+        200:
+          description: top100Movie updated
+    delete:
+      tags:
+        - TOPMOVIES
+      summary: Delete a movie from top100Movie by `movieId`
+      description: private route
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieId
+          schema:
+            type: string
+          required: true
+          description: Alphanumeric ID of the movie
+      responses:
+        200:
+          description: top100Movie deleted
+
